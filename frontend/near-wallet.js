@@ -1,5 +1,7 @@
 /* A helper file that simplifies using the wallet selector */
 
+import { setupKeypom } from "@keypom/selector";
+
 // near api js
 import { providers } from "near-api-js";
 console.log(providers);
@@ -14,6 +16,12 @@ import MyNearIconUrl from "@near-wallet-selector/my-near-wallet/assets/my-near-w
 import { setupWalletSelector } from "@near-wallet-selector/core";
 import { setupLedger } from "@near-wallet-selector/ledger";
 import { setupMyNearWallet } from "@near-wallet-selector/my-near-wallet";
+
+import { setupWalletSelector } from "@near-wallet-selector/core";
+import { setupKeypom } from "@keypom/selector";
+import { setupMyNearWallet } from "@near-wallet-selector/my-near-wallet";
+import { setupModal } from "@near-wallet-selector/modal-ui";
+import { KEYPOM_OPTIONS } from "./keypom-data";
 
 const THIRTY_TGAS = "30000000000000";
 const NO_DEPOSIT = "0";
@@ -41,7 +49,17 @@ export class Wallet {
       network: this.network,
       modules: [
         setupMyNearWallet({ iconUrl: MyNearIconUrl }),
-        setupLedger({ iconUrl: LedgerIconUrl }),
+        setupKeypom({
+          networkId: this.network,
+          signInContractId: this.createAccessKeyFor,
+          trialAccountSpecs: {
+            url: "http://localhost:1234/trial-url#ACCOUNT_ID/SECRET_KEY",
+            modalOptions: KEYPOM_OPTIONS,
+          },
+          instantSignInSpecs: {
+            url: "http://localhost:1234/instant-url#ACCOUNT_ID/SECRET_KEY/MODULE_ID",
+          },
+        }),
       ],
     });
 

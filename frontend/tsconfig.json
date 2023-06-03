@@ -19,21 +19,21 @@
       {
         "name": "next"
       }
-    ],
-    "paths": {
-      "@components": ["./components/*"]
-    }
+    ]
   },
   "include": [
     "next-env.d.ts",
     "types",
     "**/*.ts",
+    "**/*.js",
     "**/*.tsx",
+    "**/*.jsx",
+    "**/*.js",
     ".next/types/**/*.ts",
     "near-wallet.js",
     "pages/Home.js",
     "constants/index.js",
-    "components/Layout.js",
+    "components/Layout.jsx",
     "pages/Event.js"
   ],
   "exclude": ["node_modules"]
