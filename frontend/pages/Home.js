@@ -11,6 +11,7 @@ const Home = () => {
     const createdToken = await window.contract.nftToken({
       token_id: tokenId,
     });
+    console.log("createdToken", createdToken);
     if (createdToken !== null) {
       navigate("/gallery");
     }

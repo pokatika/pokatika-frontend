@@ -8,6 +8,7 @@ import { Contract } from "./near-interface";
 import { Wallet } from "./near-wallet";
 import Gallery from "./pages/Gallery";
 import NftDetail from "./pages/NftDetail";
+import CreateEvent from "./pages/CreateEvent";
 const wallet = new Wallet({
   createAccessKeyFor: "nft_test_front.testnet",
 });
@@ -47,6 +48,7 @@ window.onload = async () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/event" element={<Event />} />
+          <Route path="/create-event" element={<CreateEvent />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/gallery/:id" element={<NftDetail />} />
         </Routes>
